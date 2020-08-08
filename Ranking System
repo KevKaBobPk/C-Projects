@@ -1,0 +1,46 @@
+#include <stdio.h>
+int main(void){
+    int i = 0;
+    int j = 0;
+    int t = 0;
+    int numberSwap = 0;
+    int students = 0;
+    int grades[10];
+    int cGrades[10];
+    scanf("%d", &students);
+    int rank = students;
+    char names[students][100];
+
+    for(i=0; i<students; i++){
+        scanf("%d\n", &grades[i]);
+    }
+    for(i=0; i<students; i++){
+        cGrades[i] = grades[i];
+    }
+    for(i=0; i<students; i++){
+        scanf("%s", names[i]);
+    }
+    for(j=0; j<students; j++){
+        for(i=0; i<students; i++){
+            if(grades[i]<grades[i+1]){
+                numberSwap = grades[i];
+                grades[i] = grades[i+1];
+                grades[i+1] = numberSwap;
+            }
+        }
+    }
+    for(j=0; j<students; j++){
+        while (cGrades[j]!=grades[j+t]){
+            t++;
+        }
+        for(i=0; i<students; i++){
+            if(grades[j+t]>grades[i]){
+                rank--;
+            }
+        }
+        printf("%s rank is %d\n", names[j], rank);
+        t = 0;
+        rank = students;
+    }
+    return 0;
+}
